@@ -7,7 +7,7 @@ import { logoImage, navText } from "./constant";
 
 const cx = classNames.bind(styles);
 
-interface NavigationBarProps {
+export interface NavigationBarProps {
   profile: { email: string; profileImageSource: string } | null;
   isSticky: boolean;
 }

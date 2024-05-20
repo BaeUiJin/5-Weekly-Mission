@@ -13,6 +13,7 @@ export const AddFolderButton: React.FC<AddFolderButtonProps> = ({
 }) => {
   return (
     <button className={cx("container")} onClick={onClick}>
+      {" "}
       <span>폴더 추가</span>
       <AddIcon className={cx("icon")} />
     </button>

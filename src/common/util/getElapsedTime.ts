@@ -1,6 +1,10 @@
 import { timeInMilliseconds } from "./constant";
 
-export const getElapsedTime = (createdAt: Date) => {
+interface getElapsedTimeType {
+  (cratedAt: Date): string;
+}
+
+export const getElapsedTime: getElapsedTimeType = (createdAt) => {
   const now = new Date();
   const past = new Date(createdAt);
   const elapsedTime = Number(now) - Number(past);

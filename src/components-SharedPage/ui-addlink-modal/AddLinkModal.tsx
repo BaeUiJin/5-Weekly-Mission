@@ -6,8 +6,7 @@ import { ModalContentButton } from "@/common/ui-modal-content-button";
 import { ModalContentTitle } from "@/common/ui-modal-content-title";
 import { ModalContentDescription } from "@/common/ui-modal-content-description";
 import { FolderItem } from "@/components-FolderPage/ui-folder-item";
-import { Folder } from "@/common/types/data-access-types";
-import { AddLinkModalProps } from "@/common/types/modal-prop-types";
+import type { AddLinkModalProps } from "@/common/types/modal-prop-types";
 
 const cx = classNames.bind(styles);
 

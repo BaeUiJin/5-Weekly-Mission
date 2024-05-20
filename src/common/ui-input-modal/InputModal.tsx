@@ -6,7 +6,7 @@ import { ModalContentBox } from "@/common/ui-modal-content-box";
 import { ModalContentButton } from "@/common/ui-modal-content-button";
 import { ModalContentTitle } from "@/common/ui-modal-content-title";
 import React from "react";
-import { InputModalProps } from "../types/modal-prop-types";
+import type { InputModalProps } from "../types/modal-prop-types";
 
 const cx = classNames.bind(styles);
 

@@ -1,14 +1,25 @@
 import styles from "./EditableCard.module.scss";
 import classNames from "classnames/bind";
-import { useCallback, useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { Card } from "@/common/ui-card";
 import { CardContent } from "@/common/ui-card-content";
 import { CardImage } from "@/common/ui-card-image";
 import { Popover } from "@/common/ui-popover/Popover";
+import type { EditedSampleLink } from "@/common/types/data-access-types";
 
 const cx = classNames.bind(styles);
 
-export const EditableCard = ({
+interface EditableCardProps extends EditedSampleLink {
+  popoverPosition: Record<string, number | undefined>;
+  onDeleteClick: () => void;
+  onAddToFolderClick: () => void;
+}
+
+interface handlerType {
+  (event: React.MouseEvent<HTMLElement>): void;
+}
+
+export const EditableCard: React.FC<EditableCardProps> = ({
   url,
   imageSource,
   alt,
@@ -19,24 +30,24 @@ export const EditableCard = ({
   onDeleteClick,
   onAddToFolderClick,
 }) => {
-  const [isHovered, setIsHovered] = useState(false);
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
+  const [isPopoverOpen, setIsPopoverOpen] = useState<boolean>(false);
   const kebabButtonRef = useRef(null);
   const handleMouseOver = () => setIsHovered(true);
   const handleMouseLeave = () => setIsHovered(false);
-  const handleKebabClick = (event) => {
+  const handleKebabClick: handlerType = (event) => {
     event.preventDefault();
     setIsPopoverOpen(true);
   };
   const handleBackgroundClick = useCallback(() => {
     setIsPopoverOpen(false);
   }, []);
-  const handleDeleteClick = (event) => {
+  const handleDeleteClick: handlerType = (event) => {
     event.preventDefault();
     onDeleteClick();
     setIsPopoverOpen(false);
   };
-  const handleAddToFolderClick = (event) => {
+  const handleAddToFolderClick: handlerType = (event) => {
     event.preventDefault();
     onAddToFolderClick();
     setIsPopoverOpen(false);

@@ -7,7 +7,7 @@ const cx = classNames.bind(styles);
 interface IconAndTextButtonProps {
   iconSource: string;
   text: string;
-  onClick: () => void; // QUESTION : '() => setCurrentModal(modalId)'의 타입은 이게 맞을까? setter 함수의 타입은 여기서 고려해주지 않아도 되는걸까?
+  onClick: () => void;
 }
 
 export const IconAndTextButton: React.FC<IconAndTextButtonProps> = ({

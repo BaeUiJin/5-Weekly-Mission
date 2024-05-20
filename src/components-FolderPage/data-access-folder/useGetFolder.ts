@@ -1,17 +1,36 @@
 import { mapFolderData } from "@/components-FolderPage/util-map";
 import { useAsync } from "@/common/util";
 import { axiosInstance } from "@/common/util";
-import { Response, SampleFolder } from "@/common/types/data-access-types";
-import { AxiosResponse } from "axios";
+import type { mapFolderDataReturnType } from "@/components-FolderPage/util-map";
+import type { asyncFunctionType } from "@/common/util";
+import type { SampleFolder } from "@/common/types/data-access-types";
 
-export const useGetFolder = () => {
-  const getFolder: () => Promise<AxiosResponse<Response, any>> = () =>
-    axiosInstance.get("sample/folder");
-  const { loading, error, data } = useAsync(getFolder);
+interface useGetFolderType {
+  (): {
+    loading: boolean;
+    error: any;
+    folder: null | mapFolderDataReturnType;
+  };
+}
 
-  const folderData = data as SampleFolder;
+export const useGetFolder: useGetFolderType = () => {
+  const getFolder: asyncFunctionType = () => axiosInstance.get("sample/folder");
+  const { loading, error, data: rawFolderData } = useAsync(getFolder);
 
-  const folder = mapFolderData(folderData?.folder);
+  // NOTE: 타입가드
+  const isSampleFolder = (
+    rawFolderData: any
+  ): rawFolderData is SampleFolder => {
+    return (
+      rawFolderData !== null &&
+      typeof rawFolderData === "object" &&
+      "folder" in rawFolderData
+    );
+  };
 
-  return { loading, error, data: folder };
+  const folder = isSampleFolder(rawFolderData)
+    ? mapFolderData(rawFolderData.folder)
+    : null;
+
+  return { loading, error, folder };
 };

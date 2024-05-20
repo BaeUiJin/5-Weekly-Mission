@@ -15,7 +15,7 @@ export interface AlertModalProps extends ModalProps {
 export interface AddLinkModalProps extends ModalProps {
   buttonText: string;
   selectedLinkUrl: string | null;
-  folders: Folder[];
+  folders: Folder[] | null;
   selectedFolderId: number | null;
   setSelectedFolderId: React.Dispatch<React.SetStateAction<number | null>>;
   onAddClick: () => void; //TODO: 링크추가 기능 구현 시 완성할 것

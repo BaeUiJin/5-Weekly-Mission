@@ -1,4 +1,3 @@
-import { MouseEventHandler, ReactNode } from "react";
 import styles from "./ModalContentButton.module.scss";
 import classNames from "classnames/bind";
 

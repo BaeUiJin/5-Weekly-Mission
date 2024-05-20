@@ -1,5 +1,6 @@
 import { useEffectOnce } from "./useEffectOnce";
 
+// TODO: 다른 컴포넌트에서 사용할 때 타입 지정할 것
 export const useKakaoSdk = () => {
   const shareKakao = ({ url, title, description, imageUrl }) => {
     if (window.Kakao) {

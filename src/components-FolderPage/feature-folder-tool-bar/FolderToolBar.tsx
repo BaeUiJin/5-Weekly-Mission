@@ -9,12 +9,12 @@ import { IconAndTextButton } from "@/common/ui-icon-and-text-button";
 import { InputModal } from "@/common/ui-input-modal/InputModal";
 import { DeleteModal } from "@/common/ui-delete-modal";
 import { ShareModal } from "@/components-FolderPage/ui-share-modal";
-import { Folder } from "@/common/types/data-access-types";
+import type { Folder } from "@/common/types/data-access-types";
 
 const cx = classNames.bind(styles);
 
 interface FolderToolBarProps {
-  folders: Folder[];
+  folders: Folder[] | null;
   selectedFolderId: number | string;
   setSelectedFolderId: React.Dispatch<React.SetStateAction<number | string>>;
   setKeyword: React.Dispatch<React.SetStateAction<string>>;
@@ -73,7 +73,7 @@ export const FolderToolBar: React.FC<FolderToolBarProps> = ({
             setCurrentModal(modalsId.addFolder);
           }}
         />
-        {/* REMIND: 이런 식으로 팝업 시킬 모달창을 제어할 수 있다 */}
+        {/* NOTE: 이런 식으로 팝업 시킬 모달창을 제어할 수 있다 */}
         <InputModal
           isOpen={currentModal === modalsId.addFolder}
           onCloseClick={closeModal}

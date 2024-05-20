@@ -1,17 +1,12 @@
 import { format } from "date-fns";
 import { getElapsedTime } from "@/common/util";
-import { SampleLink, EditedSampleLink } from "@/common/types/data-access-types";
+import { EditedSampleLink, SampleLink } from "@/common/types/data-access-types";
 
-type mapLinksData = ({
-  id,
-  createdAt,
-  imageSource,
-  url,
-  title,
-  description,
-}: SampleLink) => EditedSampleLink;
+interface mapLinksDataType {
+  (link: SampleLink): EditedSampleLink;
+}
 
-export const mapLinksData: mapLinksData = (link) => {
+export const mapLinksData: mapLinksDataType = (link) => {
   const { id, createdAt, url, imageSource, title, description } = link;
 
   return {

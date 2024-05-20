@@ -1,27 +1,27 @@
-import {
+import type {
   EditedSampleLink,
   SampleFolder,
 } from "@/common/types/data-access-types";
-import { mapLinksData } from "@/components-SharedPage/util-map";
+import { mapLinksData } from "@/common/util/mapLinksData";
 
-type mapFolderData = (folder: SampleFolder["folder"] | undefined) =>
-  | {
-      profileImage: string | undefined;
-      ownerName: string | undefined;
-      folderName: string | undefined;
-      links: EditedSampleLink[] | undefined;
-    }
-  | {};
+export interface mapFolderDataReturnType {
+  profileImage: string;
+  ownerName: string;
+  folderName: string;
+  links: EditedSampleLink[];
+}
 
-export const mapFolderData: mapFolderData = (folder) => {
-  if (!folder) return {};
+interface mapFolderDataType {
+  (folder: SampleFolder["folder"]): mapFolderDataReturnType;
+}
 
+export const mapFolderData: mapFolderDataType = (folder) => {
   const { name, owner, links } = folder;
 
   return {
-    profileImage: owner?.profileImageSource,
-    ownerName: owner?.name,
+    profileImage: owner.profileImageSource,
+    ownerName: owner.name,
     folderName: name,
-    links: links?.map(mapLinksData) ?? [],
+    links: links.map(mapLinksData),
   };
 };

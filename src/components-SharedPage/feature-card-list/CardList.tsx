@@ -1,20 +1,24 @@
 import { EditableCard } from "@/components-SharedPage/ui-editable-card";
 import { NoLink } from "@/components-SharedPage/ui-no-link";
 import React, { useCallback, useRef, useState } from "react";
-import { CardList as UiCardList } from "@/components-SharedPage/ui-card-list";
+import { forwardedCardList as UiCardList } from "@/components-SharedPage/ui-card-list/CardList";
 import { modalsId } from "./constant";
 import { AlertModal } from "@/components-SharedPage/ui-alert-modal";
 import { AddLinkModal } from "@/components-SharedPage/ui-addlink-modal";
 import { useGetFolders } from "@/components-FolderPage/data-access-folder";
-import { EditedSampleLink } from "@/common/types/data-access-types";
+import type { EditedSampleLink } from "@/common/types/data-access-types";
 
-interface CardListProps {
-  links: EditedSampleLink[];
+type CardListProps = React.PropsWithChildren<{
+  links: EditedSampleLink[] | undefined;
+}>;
+
+export interface getPopoverPositionType {
+  (cardIndex: number): Record<string, number | undefined>;
 }
 
 export const CardList: React.FC<CardListProps> = ({ links }) => {
-  const { data: folders } = useGetFolders();
-  const cardListRef = useRef(null);
+  const { folders } = useGetFolders();
+  const cardListRef = useRef<HTMLDivElement | null>(null);
   const [selectedFolderId, setSelectedFolderId] = useState<number | null>(null);
   const [currentModal, setCurrentModal] = useState<string | null>(null);
   const [selectedLinkUrl, setSelectedLinkUrl] = useState<string | null>(null);
@@ -29,8 +33,10 @@ export const CardList: React.FC<CardListProps> = ({ links }) => {
     }
   };
 
-  const getPopoverPosition = useCallback(
-    (cardIndex: number): { [position: string]: number } => {
+  // NOTE: 팝오버 창이 케밥 버튼의 왼쪽, 오른쪽에 뜰지 화면 상에서 카드 위치를 기준으로 판단해주는 기능
+
+  const getPopoverPosition: getPopoverPositionType = useCallback(
+    (cardIndex) => {
       const count =
         cardListRef?.current !== null
           ? window
@@ -46,10 +52,10 @@ export const CardList: React.FC<CardListProps> = ({ links }) => {
     [cardListRef]
   );
 
-  if (links.length === 0) return <NoLink />;
+  if (links?.length === 0) return <NoLink />;
   return (
     <UiCardList ref={cardListRef}>
-      {links.map((link, index) => (
+      {links?.map((link, index) => (
         <EditableCard
           key={link?.id}
           {...link}
@@ -58,7 +64,7 @@ export const CardList: React.FC<CardListProps> = ({ links }) => {
             setSelectedLinkUrl(link?.url);
             setCurrentModal(modalsId.deleteLink);
           }}
-          onAddLinkClick={() => {
+          onAddToFolderClick={() => {
             setSelectedLinkUrl(link?.url);
             setCurrentModal(modalsId.addToFolder);
           }}

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Card } from "@/common/ui-card";
 import { CardContent } from "@/common/ui-card-content";
 import { CardImage } from "@/common/ui-card-image";
-import { EditedSampleLink, SampleLink } from "@/common/types/data-access-types";
+import type { SampleLink } from "@/common/types/data-access-types";
 
 interface ReadOnlyCardProps
   extends Omit<SampleLink, "title" | "createdAt" | "id"> {

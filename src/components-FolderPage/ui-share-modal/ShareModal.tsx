@@ -8,7 +8,7 @@ import { ReactComponent as KaKaoIcon } from "./kakao.svg";
 import { ReactComponent as FacebookIcon } from "./facebook.svg";
 import { ReactComponent as LinkIcon } from "./link.svg"; // TODO: IMAGE 컴포넌트로 수정할 것
 import React from "react";
-import { ShareModalProps } from "@/common/types/modal-prop-types";
+import type { ShareModalProps } from "@/common/types/modal-prop-types";
 
 const cx = classNames.bind(styles);
 

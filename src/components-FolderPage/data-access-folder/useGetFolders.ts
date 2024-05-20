@@ -1,17 +1,33 @@
+import type { asyncFunctionType } from "@/common/util";
+import type { Folder, Folders } from "@/common/types/data-access-types";
 import { axiosInstance } from "@/common/util";
 import { useAsync } from "@/common/util";
-import { Folders, Response } from "@/common/types/data-access-types";
-import { AxiosResponse } from "axios";
 
-export const useGetFolders = () => {
-  const getFolders: () => Promise<AxiosResponse<Response, any>> = () =>
+interface useGetFoldersType {
+  (): {
+    loading: boolean;
+    error: any;
+    folders: null | Folder[];
+  };
+}
+
+export const useGetFolders: useGetFoldersType = () => {
+  const getFolders: asyncFunctionType = () =>
     axiosInstance.get("users/1/folders");
-  const { loading, error, data } = useAsync(getFolders);
+  const { loading, error, data: rawFoldersData } = useAsync(getFolders);
 
-  const foldersData = data as Folders;
+  // NOTE: 타입가드
+  const isFolders = (rawFoldersData: any): rawFoldersData is Folders => {
+    return (
+      rawFoldersData !== null &&
+      typeof rawFoldersData === "object" &&
+      "data" in rawFoldersData
+    );
+  };
 
-  const folders = foldersData?.data ?? [];
-  const sortedFolders = folders.sort((a, b) => a?.id - b?.id);
+  const folders = isFolders(rawFoldersData)
+    ? rawFoldersData.data.sort((a, b) => a?.id - b?.id)
+    : null;
 
-  return { loading, error, data: sortedFolders };
+  return { loading, error, folders };
 };

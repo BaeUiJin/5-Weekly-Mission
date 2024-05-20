@@ -7,12 +7,16 @@ import { useBackgroundClick } from "@/common/util/useBackgroundClick";
 const cx = classNames.bind(styles);
 
 type PopoverProps = React.PropsWithChildren<{
-  isOpen: Boolean;
+  isOpen: boolean;
   anchorRef: React.RefObject<HTMLElement>;
-  anchorPosition: { [position: string]: number }; // TODO: 맞는지 나중에 한번 더 확인할 것
+  anchorPosition: Record<string, number | undefined>; // TODO: 맞는지 나중에 한번 더 확인할 것
   onBackgroundClick: () => void;
   disableCloseWithBackgroundClick?: boolean;
 }>;
+
+export interface handleBackgroundClickType {
+  (event: MouseEvent): void; // NOTE: React MouseEvent 가 아니라 일반 MouseEvent
+}
 
 export const Popover: React.FC<PopoverProps> = ({
   children,
@@ -31,8 +35,8 @@ export const Popover: React.FC<PopoverProps> = ({
       left: anchorPosition?.left ?? "unset",
     };
   }, [anchorPosition]);
-  const handleBackgroundClick = useCallback(
-    (event: MouseEvent): void => {
+  const handleBackgroundClick: handleBackgroundClickType = useCallback(
+    (event) => {
       const target = event.target as HTMLElement | null;
       const isPopover = popoverRef.current?.contains(target);
       const isAnchor = anchorRef.current?.contains(target);

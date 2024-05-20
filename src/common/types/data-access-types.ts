@@ -68,7 +68,7 @@ export type SampleFolder = {
   folder: {
     id: number;
     name: string;
-    owner: SampleUser;
+    owner: Omit<SampleUser, "email">;
     links: SampleLink[];
   };
 };
@@ -82,9 +82,3 @@ export type Types =
   | SampleUser
   | SampleLink
   | SampleFolder;
-
-//response
-export type Response = {
-  data: Types;
-  headers: any;
-};

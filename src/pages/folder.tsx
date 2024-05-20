@@ -10,10 +10,12 @@ import { LinkForm } from "@/components-SharedPage/feature-link-form";
 import { CardList } from "@/components-SharedPage/feature-card-list";
 
 export const FolderPage = () => {
-  const { data: folders } = useGetFolders();
-  const [selectedFolderId, setSelectedFolderId] = useState(allLinksId);
-  const { data: links, loading } = useGetLinks(selectedFolderId);
-  const [keyword, setKeyword] = useState("");
+  const { folders } = useGetFolders();
+  const [selectedFolderId, setSelectedFolderId] = useState<string | number>(
+    allLinksId
+  );
+  const { links, loading } = useGetLinks(selectedFolderId);
+  const [keyword, setKeyword] = useState<string>("");
 
   const filteredLinks = links?.filter(({ id, alt, description }) => {
     return [id, alt, description].join("").includes(keyword);

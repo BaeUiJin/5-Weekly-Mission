@@ -5,8 +5,7 @@ import { ModalContentBox } from "@/common/ui-modal-content-box";
 import { ModalContentButton } from "@/common/ui-modal-content-button";
 import { ModalContentTitle } from "@/common/ui-modal-content-title";
 import { ModalContentDescription } from "@/common/ui-modal-content-description";
-import { KeyboardEvent } from "react";
-import { DeleteModalProps } from "../types/modal-prop-types";
+import type { DeleteModalProps } from "../types/modal-prop-types";
 
 const cx = classNames.bind(styles);
 

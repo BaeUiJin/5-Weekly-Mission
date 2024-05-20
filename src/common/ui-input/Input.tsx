@@ -5,7 +5,7 @@ const cx = classNames.bind(styles);
 
 interface InputProps {
   type?: string;
-  value: undefined;
+  value: undefined; // TODO: 기능 구현 시 타입 수정
   onChange: undefined;
   placeholder: string;
 }
