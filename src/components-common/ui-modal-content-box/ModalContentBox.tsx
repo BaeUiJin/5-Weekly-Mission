@@ -1,3 +1,4 @@
+import Image from "next/image";
 import styles from "./ModalContentBox.module.scss";
 import classNames from "classnames/bind";
 
@@ -17,11 +18,14 @@ export const ModalContentBox: React.FC<ModalContentBoxProps> = ({
   return (
     <div className={cx("container")}>
       <button onClick={onCloseClick}>
-        <img
-          className={cx("close")}
-          src="images/close.svg"
-          alt="X모양 닫기 버튼"
-        />
+        <div className={cx("close")}>
+          <Image
+            fill
+            src="images/close.svg"
+            alt="X모양 닫기 버튼"
+            style={{ objectFit: "contain" }}
+          />
+        </div>
       </button>
       <div className={cx("items")}>
         {header}

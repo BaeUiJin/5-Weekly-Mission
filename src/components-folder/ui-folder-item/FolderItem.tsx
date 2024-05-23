@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./FolderItem.module.scss";
 import classNames from "classnames/bind";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -22,7 +23,14 @@ export const FolderItem: React.FC<FolderItemProps> = ({
       <span className={cx("name", { isSelected })}>{folderName}</span>
       <span className={cx("count")}>{linkCount}개 링크</span>
       {isSelected && (
-        <img className={cx("check")} src="images/check.svg" alt="체크 아이콘" />
+        <div className={cx("check")}>
+          <Image
+            fill
+            src="images/check.svg"
+            alt="체크 아이콘"
+            style={{ objectFit: "contain" }}
+          />
+        </div>
       )}
     </button>
   );

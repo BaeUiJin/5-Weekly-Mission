@@ -52,6 +52,7 @@
 }
 
 .sns {
+  position: relative;
   grid-area: sns;
   display: flex;
   column-gap: 1.2rem;

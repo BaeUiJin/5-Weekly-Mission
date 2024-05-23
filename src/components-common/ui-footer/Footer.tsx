@@ -3,6 +3,7 @@ import classNames from "classnames/bind";
 import { route } from "@/src/components-common/util";
 import { footerText } from "./constant";
 import React from "react";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -27,9 +28,11 @@ export const Footer: React.FC<FooterProps> = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
+            <Image
+              fill
               src="images/facebook.svg"
               alt="facebook 홈페이지로 연결된 facebook 로고"
+              style={{ objectFit: "contain" }}
             />
           </a>
           <a
@@ -37,9 +40,11 @@ export const Footer: React.FC<FooterProps> = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
+            <Image
+              fill
               src="images/twitter.svg"
               alt="twitter 홈페이지로 연결된 twitter 로고"
+              style={{ objectFit: "contain" }}
             />
           </a>
           <a
@@ -47,9 +52,11 @@ export const Footer: React.FC<FooterProps> = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
+            <Image
+              fill
               src="images/youtube.svg"
               alt="youtube 홈페이지로 연결된 youtube 로고"
+              style={{ objectFit: "contain" }}
             />
           </a>
           <a
@@ -57,9 +64,11 @@ export const Footer: React.FC<FooterProps> = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <img
+            <Image
+              fill
               src="images/instagram.svg"
               alt="instagram 홈페이지로 연결된 instagram 로고"
+              style={{ objectFit: "contain" }}
             />
           </a>
         </div>

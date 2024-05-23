@@ -20,11 +20,14 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
     <nav className={cx("container", { sticky: isSticky })}>
       <div className={cx("items")}>
         <a href={route.랜딩}>
-          <img
-            className={cx("logo")}
-            src={logoImage}
-            alt="Linkbrary 서비스 로고"
-          />
+          <div className={cx("logo")}>
+            <Image
+              fill
+              src={logoImage}
+              alt="Linkbrary 서비스 로고"
+              style={{ objectFit: "contain" }}
+            />
+          </div>
         </a>
         {profile ? (
           <Profile profile={profile} />

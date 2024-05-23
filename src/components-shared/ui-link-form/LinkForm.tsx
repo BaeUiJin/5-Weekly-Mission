@@ -1,6 +1,7 @@
 import { Cta } from "@/src/components-common/ui-cta";
 import styles from "./LinkForm.module.scss";
 import classNames from "classnames/bind";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,11 @@ export const LinkForm: React.FC<LinkFormProps> = ({ onSubmit }) => {
     <div className={cx("container")}>
       <form className={cx("form")} onSubmit={handleSubmit}>
         <div className={cx("input-box")}>
-          <img className={cx("icon")} src="images/link.svg" alt="링크 아이콘" />
+          <Image
+            className={cx("icon")}
+            src="images/link.svg"
+            alt="링크 아이콘"
+          />
           <input
             className={cx("input")}
             type="text"

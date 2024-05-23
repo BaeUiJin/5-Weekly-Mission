@@ -1,6 +1,7 @@
 import React from "react";
 import styles from "./IconAndTextButton.module.scss";
 import classNames from "classnames/bind";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +18,14 @@ export const IconAndTextButton: React.FC<IconAndTextButtonProps> = ({
 }) => {
   return (
     <button className={cx("container")} onClick={onClick}>
-      <img className={cx("icon")} src={iconSource} alt={`${text} 아이콘`} />
+      <div className={cx("icon")}>
+        <Image
+          fill
+          src={iconSource}
+          alt={`${text} 아이콘`}
+          style={{ objectFit: "contain" }}
+        />
+      </div>
       <span className={cx("text")}>{text}</span>
     </button>
   );

@@ -6,6 +6,7 @@ import { CardContent } from "@/src/components-common/ui-card-content";
 import { CardImage } from "@/src/components-common/ui-card-image";
 import { Popover } from "@/src/components-common/ui-popover/Popover";
 import type { EditedSampleLink } from "../../../types/data-access-types";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
@@ -67,14 +68,24 @@ export const EditableCard: React.FC<EditableCardProps> = ({
           className={cx("star")}
           onClick={(event) => event.preventDefault()}
         >
-          <img src="images/star.svg" alt="즐겨찾기를 나타내는 별" />
+          <Image
+            width={34}
+            height={34}
+            src="images/star.svg"
+            alt="즐겨찾기를 나타내는 별"
+          />
         </button>
         <button
           ref={kebabButtonRef}
           className={cx("kebab")}
           onClick={handleKebabClick}
         >
-          <img src="images/kebab.svg" alt="더보기를 나타내는 점 3개" />
+          <Image
+            width={21}
+            height={17}
+            src="images/kebab.svg"
+            alt="더보기를 나타내는 점 3개"
+          />
         </button>
         <Popover
           isOpen={isPopoverOpen}
