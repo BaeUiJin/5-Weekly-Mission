@@ -1,5 +1,8 @@
+import { Layout } from "@/src/components-common/feature-layout";
+import { Header } from "@/src/components-index/ui-header/Header";
+import { Overview } from "@/src/components-index/ui-overview/Overview";
+import { IndexLayout } from "@/src/page-layout/IndexLayout/IndexLayout";
 import Head from "next/head";
-import Link from "next/link";
 
 export default function Home() {
   return (
@@ -29,11 +32,9 @@ export default function Home() {
           href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css"
         />
       </Head>
-      <div>
-        <Link href="/folder">(클릭) 폴더페이지로 이동</Link>
-        <br></br>
-        <Link href="/shared">(클릭) 링크페이지로 이동</Link>
-      </div>
+      <Layout isSticky={true} showUserProfile={false}>
+        <IndexLayout header={<Header />} overview={<Overview />} />
+      </Layout>
     </>
   );
 }

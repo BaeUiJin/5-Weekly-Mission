@@ -4,17 +4,18 @@ import { route } from "@/src/components-common/util";
 import { Cta } from "@/src/components-common/ui-cta";
 import { Profile } from "@/src/components-user/ui-profile";
 import { logoImage, navText } from "./constant";
+import Image from "next/image";
 
 const cx = classNames.bind(styles);
 
 export interface NavigationBarProps {
-  profile: { email: string; profileImageSource: string } | null;
   isSticky: boolean;
+  showUserProfile: boolean;
 }
 
 export const NavigationBar: React.FC<NavigationBarProps> = ({
-  profile,
   isSticky,
+  showUserProfile,
 }) => {
   return (
     <nav className={cx("container", { sticky: isSticky })}>
@@ -29,8 +30,8 @@ export const NavigationBar: React.FC<NavigationBarProps> = ({
             />
           </div>
         </a>
-        {profile ? (
-          <Profile profile={profile} />
+        {showUserProfile ? (
+          <Profile />
         ) : (
           <a href={route.로그인}>
             <Cta>
