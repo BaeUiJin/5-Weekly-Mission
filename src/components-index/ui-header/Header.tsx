@@ -2,6 +2,7 @@ import styles from "./Header.module.scss";
 import classNames from "classnames/bind";
 import React from "react";
 import { Cta } from "@/src/components-common/ui-cta";
+import { text } from "@/src/components-common/util";
 
 const cx = classNames.bind(styles);
 
@@ -18,7 +19,7 @@ export const Header: React.FC<{}> = () => {
         </div>
         {/* TODO: 일단 Ui 만 구현. 추후 링크 추가하기 기능 추가 */}
         <Cta>
-          <span className={cx("add-link")}>링크 추가하기</span>
+          <span className={cx("add-link")}>{text.addLink}</span>
         </Cta>
         <img
           src={"/images/header.png"}
