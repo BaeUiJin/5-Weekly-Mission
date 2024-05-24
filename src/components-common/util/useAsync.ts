@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useEffectOnce } from "./useEffectOnce";
 import { Types } from "../../../types/data-access-types";
-import { AxiosResponse } from "axios";
+import type { AxiosResponse } from "axios";
 
 export interface asyncFunctionType {
   (): Promise<AxiosResponse<Types>>;

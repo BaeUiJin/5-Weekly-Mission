@@ -21,7 +21,7 @@ export const LinkForm: React.FC<LinkFormProps> = ({ onSubmit }) => {
         <div className={cx("input-box")}>
           <Image
             className={cx("icon")}
-            src="images/link.svg"
+            src="/images/link.svg"
             alt="링크 아이콘"
           />
           <input

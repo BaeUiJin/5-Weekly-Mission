@@ -1,6 +1,12 @@
 import styles from "./Footer.module.scss";
 import classNames from "classnames/bind";
-import { route } from "@/src/components-common/util";
+import {
+  facebook,
+  instagram,
+  route,
+  twitter,
+  youtube,
+} from "@/src/components-common/util";
 import { footerText } from "./constant";
 import React from "react";
 import Image from "next/image";
@@ -23,51 +29,35 @@ export const Footer: React.FC<FooterProps> = () => {
           </a>
         </div>
         <div className={cx("sns")}>
-          <a
-            href="https://www.facebook.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={facebook.url} target="_blank" rel="noopener noreferrer">
             <Image
               fill
-              src="images/facebook.svg"
-              alt="facebook 홈페이지로 연결된 facebook 로고"
+              src={facebook.src}
+              alt={facebook.alt}
               style={{ objectFit: "contain" }}
             />
           </a>
-          <a
-            href="https://twitter.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={twitter.url} target="_blank" rel="noopener noreferrer">
             <Image
               fill
-              src="images/twitter.svg"
-              alt="twitter 홈페이지로 연결된 twitter 로고"
+              src={twitter.src}
+              alt={twitter.alt}
               style={{ objectFit: "contain" }}
             />
           </a>
-          <a
-            href="https://www.youtube.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={youtube.url} target="_blank" rel="noopener noreferrer">
             <Image
               fill
-              src="images/youtube.svg"
-              alt="youtube 홈페이지로 연결된 youtube 로고"
+              src={youtube.src}
+              alt={youtube.alt}
               style={{ objectFit: "contain" }}
             />
           </a>
-          <a
-            href="https://www.instagram.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href={instagram.url} target="_blank" rel="noopener noreferrer">
             <Image
               fill
-              src="images/instagram.svg"
-              alt="instagram 홈페이지로 연결된 instagram 로고"
+              src={instagram.src}
+              alt={instagram.alt}
               style={{ objectFit: "contain" }}
             />
           </a>
