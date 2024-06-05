@@ -1,13 +1,13 @@
-import { useGetFolders } from "@/src/components-folder/data-access-folder";
-import { useGetLinks } from "@/src/components-shared/data-access-link";
-import { Layout } from "@/src/components-common/feature-layout";
-import { FolderLayout } from "@/src/page-layout/FolderLayout";
-import { FolderToolBar } from "@/src/components-folder/feature-folder-tool-bar";
-import { SearchBar } from "@/src/components-common/ui-search-bar";
+import { useGetFolders } from "@/src/components/folder-page/data-access-folder";
+import { useGetLinks } from "@/src/components/shared-page/data-access-link";
+import { Layout } from "@/src/components/common/feature-layout";
+import { FolderLayout } from "@/src/layouts/folder-layout";
+import { FolderToolBar } from "@/src/components/folder-page/feature-folder-tool-bar";
+import { SearchBar } from "@/src/components/common/ui-search-bar";
 import { useState } from "react";
-import { allLinksId } from "@/src/components-shared/data-access-link/constant";
-import { LinkForm } from "@/src/components-folder/feature-link-form";
-import { CardList } from "@/src/components-common/feature-card-list";
+import { allLinksId } from "@/src/components/shared-page/data-access-link/constant";
+import { LinkForm } from "@/src/components/folder-page/feature-link-form";
+import { CardList } from "@/src/components/common/feature-card-list";
 
 export default function FolderPage() {
   const { folders } = useGetFolders();

@@ -1,7 +1,7 @@
-import { Layout } from "@/src/components-common/feature-layout";
-import { Header } from "@/src/components-index/ui-header/Header";
-import { Overview } from "@/src/components-index/ui-overview/Overview";
-import { IndexLayout } from "@/src/page-layout/IndexLayout/IndexLayout";
+import { Layout } from "@/src/components/common/feature-layout";
+import { Header } from "@/src/components/index-page/ui-header/Header";
+import { Overview } from "@/src/components/index-page/ui-overview/Overview";
+import { IndexLayout } from "@/src/layouts/index-layout/IndexLayout";
 import Head from "next/head";
 
 export default function Home() {

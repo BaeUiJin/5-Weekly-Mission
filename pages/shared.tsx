@@ -1,12 +1,12 @@
-import { useGetFolder } from "@/src/components-folder/data-access-folder";
-import { Layout } from "@/src/components-common/feature-layout";
-import { SharedLayout } from "@/src/page-layout/SharedLayout";
-import { CardList } from "@/src/components-common/feature-card-list";
-import { FolderInfo } from "@/src/components-shared/ui-folder-info";
-import { ReadOnlyCard } from "@/src/components-shared/ui-read-only-card";
-import { SearchBar } from "@/src/components-common/ui-search-bar";
+import { useGetFolder } from "@/src/components/folder-page/data-access-folder";
+import { Layout } from "@/src/components/common/feature-layout";
+import { SharedLayout } from "@/src/layouts/shared-layout";
+import { CardList } from "@/src/components/common/feature-card-list";
+import { FolderInfo } from "@/src/components/shared-page/ui-folder-info";
+import { ReadOnlyCard } from "@/src/components/shared-page/ui-read-only-card";
+import { SearchBar } from "@/src/components/common/ui-search-bar";
 import { useMemo, useState } from "react";
-import { defaultImage } from "@/src/components-common/ui-card-image/constant";
+import { defaultImage } from "@/src/components/common/ui-card-image/constant";
 
 export default function SharedPage() {
   const { folder } = useGetFolder();
